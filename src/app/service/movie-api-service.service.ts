@@ -1,33 +1,28 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http' ;
 import {Observable} from 'rxjs';
+import { MovieModel } from '../Model/movie';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MovieApiServiceService {
 
+  baseurl = "https://api.themoviedb.org/3";
+
   constructor(
-    private http:HttpClient
+    private http:HttpClient,
   ) { }
 
-  baseurl = "https://api.themoviedb.org/3";
-  apikey =  '994b274459543a5ad12662a2f287a163';
+
 
   //bannerapidata
 
-  bannerApiData():Observable<any>
+  getPopularMovies() : Observable<any>
   {
-    return this.http.get(`${this.baseurl}/trending/all/week?api_key=${this.apikey}`);
+    return this.http.get<any>(`$(this.apiUrl)/movie/popular`)
   }
 
-
-  // trendingmoviesapidata
-
-  trendingMovieApiData():Observable<any>
-  {
-    return this.http.get(`${this.baseurl}/trending/movie/day?/api_key=${this.apikey}`);
-  }
 
 
 }
