@@ -20,7 +20,7 @@ export class MovieApiServiceService {
 
   getPopularMovies() : Observable<any>
   {
-    return this.http.get<any>(`$(this.apiUrl)/movie/popular`)
+    return this.http.get<any>(`${this.baseurl}/movie/popular`)
   }
 
 

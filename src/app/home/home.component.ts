@@ -16,12 +16,17 @@ export class HomeComponent implements OnInit {
   baseUrl = "https://api.themoviedb.org/3";
   filmArray : Movie[] = [];
 
-  constructor(private http:HttpClient, private apiInterceptor : ApiInterceptorInterceptor, private apiService : MovieApiServiceService) { }
+  constructor(private http:HttpClient, private apiService : MovieApiServiceService) { }
 
 
 
   ngOnInit(): void {
-   this.apiService.getPopularMovies().subscribe(
+this.getPopularMovie();
+  }
+
+  getPopularMovie()
+  {
+    this.apiService.getPopularMovies().subscribe(
       (response) => {
         this.filmArray = response.results;
         console.log(this.filmArray)

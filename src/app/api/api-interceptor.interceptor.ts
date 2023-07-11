@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class ApiInterceptorInterceptor implements HttpInterceptor {
 
-  private apiKey : string = '994b274459543a5ad12662a2f287a163';
+  private token : string = ' eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5OTRiMjc0NDU5NTQzYTVhZDEyNjYyYTJmMjg3YTE2MyIsInN1YiI6IjY0YTdmY2JiOTY1MjIwMDEzYTIyZWM1ZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.CgcUJctl6V-qR01YdaZX-7EHGSsQQGCNzuIuzxrus5M';
 
   constructor() {}
 
@@ -18,7 +18,7 @@ export class ApiInterceptorInterceptor implements HttpInterceptor {
 
    const modifiedReq = request.clone({
     setHeaders : {
-      'api-key' : this.apiKey
+      'Authorization' : ' Bearer' + this.token,
     }
    });
 
