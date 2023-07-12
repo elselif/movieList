@@ -18,13 +18,14 @@ export class MovieApiServiceService {
 
   //bannerapidata
 
-  getPopularMovies() : Observable<any>
+  getPopularMovies(options : MovieModel) : Observable<any>
   {
-    return this.http.get<any>(`${this.baseurl}/movie/popular`)
+    return this.http.get<any>(`${this.baseurl}/movie/popular?page=${options.page}`)
   }
 
   getMovieDetail(data:any) : Observable<any>
   {
+
     return this.http.get<any>(`${this.baseurl}/movie/${data}`);
   }
 

@@ -19,6 +19,12 @@ export class HomeComponent implements OnInit {
   constructor(private http:HttpClient, private apiService : MovieApiServiceService) { }
 
 
+  options: MovieModel = {
+    page: 1,
+    total_pages: 20,
+    results: [],
+    total_results: 0
+  }
 
   ngOnInit(): void {
 this.getPopularMovie();
@@ -26,13 +32,34 @@ this.getPopularMovie();
 
   getPopularMovie()
   {
-    this.apiService.getPopularMovies().subscribe(
+    this.apiService.getPopularMovies(this.options).subscribe(
       (response) => {
         this.filmArray = response.results;
         console.log(this.filmArray)
       }
    )
   }
+
+  size(size:number)
+  {
+    this.options.page = 1;
+    this.getPopularMovie();
+
+  }
+
+  next()
+  {
+    this.options.page++;
+    this.getPopularMovie();
+  }
+
+  prev()
+  {
+    this.options.page--;
+    this.getPopularMovie();
+  }
+
+
 
 
 
