@@ -23,6 +23,12 @@ export class MovieApiServiceService {
     return this.http.get<any>(`${this.baseurl}/movie/popular`)
   }
 
+  getMovieDetail(data:any) : Observable<any>
+  {
+    return this.http.get<any>(`${this.baseurl}/movie/${data}`);
+  }
+
+
 
 
 }

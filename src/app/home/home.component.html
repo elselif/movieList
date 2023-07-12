@@ -1,10 +1,10 @@
-<div *ngFor="let item of filmArray" >
-  <div class="card" style="width: 18rem;">
-    <img [src]=" 'http://image.tmdb.org/t/p/w500' + item.backdrop_path" class="card-img-top" alt="...">
+<div *ngFor="let item of filmArray" class="d-inline-flex mt-5 mx-auto" >
+  <div class="card " style="width: 18rem; background-color: black; color: aliceblue;">
+    <img [src]=" 'http://image.tmdb.org/t/p/w500' + item.backdrop_path"  class="card-img-top" alt="...">
     <div class="card-body">
       <h5 class="card-title">{{item.title}}</h5>
       <p class="card-text">{{item.overview}}</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
+      <a class="btn btn-danger"  [routerLink]="['/movie',item.id]">Go Details</a>
     </div>
   </div>
 </div>

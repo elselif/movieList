@@ -34,16 +34,6 @@ this.getPopularMovie();
    )
   }
 
-  popularMovie(): void
-  {
 
-
-    this.http
-      .get<MovieModel>(this.baseUrl + '/movie/popular')
-      .subscribe((response :MovieModel) => {
-        this.filmArray = response.results;
-        console.log(this.filmArray)
-      });
-  }
 
 }

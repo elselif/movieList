@@ -6,11 +6,13 @@ import { AppComponent } from './app.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http'
 import { ApiInterceptorInterceptor } from './api/api-interceptor.interceptor';
 import { HomeComponent } from './home/home.component';
+import { DetailsComponent } from './details/details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
+    DetailsComponent,
 
   ],
   imports: [
