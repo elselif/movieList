@@ -1,3 +1,13 @@
+
+<div class="text-center">
+
+
+<div class="text-center text-danger">
+  <div class="spinner-border"  style="width: 5rem; height: 5rem;"  *ngIf="showSpinner" role="status">
+  </div>
+</div>
+
+
 <div *ngFor="let item of filmArray" class="d-inline-flex mt-5 mx-auto" >
   <div class="card " style="width: 18rem; background-color: black; color: aliceblue;">
     <img [src]=" 'http://image.tmdb.org/t/p/w500' + item.backdrop_path"  class="card-img-top" alt="...">
@@ -9,12 +19,18 @@
   </div>
 </div>
 
-<nav aria-label="Page navigation example">
-  <ul class="pagination">
-    <li class="page-item"><a class="page-link" (click)="prev()">Previous</a></li>
-    <li class="page-item"><a class="page-link" (click)="size(5)">1</a></li>
-    <li class="page-item"><a class="page-link" (click)="size(10)">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item"><a class="page-link" (click)="next()">Next</a></li>
+
+
+
+<nav aria-label="Page navigation example bg-dark" *ngIf="showSpinner!=true"   >
+  <ul class="pagination justify-content-center mt-5">
+    <li class="page-item"><a class="page-link  text-dark" type="button" [ngClass]="currentPage == 1 ? 'disabled' : ''" (click)="getPopularMovie(currentPage-1)" >Previous</a></li>
+    <li class="page-item"><a class="page-link active text-dark " type="button" (click)="getPopularMovie(currentPage)" >{{currentPage}}</a></li>
+    <li class="page-item"><a class="page-link text-dark" type="button" (click)="getPopularMovie(currentPage + 1)">{{currentPage + 1}}</a></li>
+    <li class="page-item"><a class="page-link text-dark" type="button" (click)="getPopularMovie(currentPage + 2)" >{{currentPage + 2}}</a></li>
+    <li class="page-item"><a class="page-link text-dark" type="button" (click)="getPopularMovie(currentPage)" >Next</a></li>
   </ul>
 </nav>
+</div>
+
+

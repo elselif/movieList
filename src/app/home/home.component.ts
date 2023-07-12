@@ -13,9 +13,9 @@ import { MovieApiServiceService } from '../service/movie-api-service.service';
 })
 export class HomeComponent implements OnInit {
 
-  baseUrl = "https://api.themoviedb.org/3";
+  currentPage = 1;
   filmArray : Movie[] = [];
-
+  showSpinner: boolean = false;
   constructor(private http:HttpClient, private apiService : MovieApiServiceService) { }
 
 
@@ -27,37 +27,23 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-this.getPopularMovie();
+this.getPopularMovie(this.currentPage);
   }
 
-  getPopularMovie()
+  getPopularMovie(pageNumber:number)
   {
-    this.apiService.getPopularMovies(this.options).subscribe(
+    this.showSpinner = true;
+    this.apiService.getPopularMovies(pageNumber).subscribe(
       (response) => {
         this.filmArray = response.results;
+        this.currentPage = pageNumber;
+        this.showSpinner = false;
         console.log(this.filmArray)
       }
    )
   }
 
-  size(size:number)
-  {
-    this.options.page = 1;
-    this.getPopularMovie();
 
-  }
-
-  next()
-  {
-    this.options.page++;
-    this.getPopularMovie();
-  }
-
-  prev()
-  {
-    this.options.page--;
-    this.getPopularMovie();
-  }
 
 
 

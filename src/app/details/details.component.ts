@@ -14,6 +14,8 @@ export class DetailsComponent implements OnInit {
 
 
   filmArray : any;
+  showSpinner: boolean = false;
+
 
   constructor( private apiService : MovieApiServiceService,private router: ActivatedRoute) { }
 
@@ -26,8 +28,10 @@ this.getMovie(getParamId);
 
   getMovie(id:any)
   {
+    this.showSpinner = true;
     this.apiService.getMovieDetail(id).subscribe((result) => {
       this.filmArray = result;
+      this.showSpinner = false;
       console.log(result,'getmoviedetails')
     })
   }
