@@ -33,6 +33,11 @@ export class MovieApiServiceService {
     return this.http.get<any>(`${this.baseurl}/movie/${data}`);
   }
 
+  getMovieList() : Observable<any>
+  {
+    return this.http.get<any>(`${this.baseurl}/genre/movie/list`);
+  }
+
 
 
 
