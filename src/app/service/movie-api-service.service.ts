@@ -31,7 +31,6 @@ export class MovieApiServiceService {
 
   getMovieDetail(data:any) : Observable<any>
   {
-
     return this.http.get<any>(`${this.baseurl}/movie/${data}`);
   }
 
@@ -39,6 +38,13 @@ export class MovieApiServiceService {
   {
     return this.http.get<any>(`${this.baseurl}/genre/movie/list`);
   }
+
+  getMovieCredits(data:any) : Observable<any>
+  {
+    return this.http.get<any>(`${this.baseurl}/movie/${data}/credits`)
+  }
+
+
 
 
 

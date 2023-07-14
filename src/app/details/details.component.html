@@ -1,15 +1,47 @@
-<div class="text-center text-danger">
-  <div class="spinner-border"  style="width: 5rem; height: 5rem;"  *ngIf="showSpinner" role="status">
-  </div>
-</div>
+<div class="text-center">
 
-<div  class="d-inline-flex mt-5 mx-auto" >
-  <div class="card " style="background-color: black; color: aliceblue;">
-    <img [src]=" 'http://image.tmdb.org/t/p/w500' + filmArray.backdrop_path" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">{{filmArray.title}}</h5>
-      <p class="card-text">{{filmArray.overview}}</p>
 
+  <div class="text-center mb-[500px] text-danger">
+    <div class="spinner-border"  style="width: 5rem; height: 5rem;"  *ngIf="showSpinner" role="status">
     </div>
+  </div>
+
+
+<div class="contain mt-5" *ngIf="showSpinner!=true">
+  <div class="row p-5">
+      <div class="col-lg-2" *ngIf="filmArray.poster_path">
+              <img
+              src="https://image.tmdb.org/t/p/original/{{ filmArray.poster_path }}"
+              >
+      </div>
+      <div class="col-lg-10 mt-5 p-4">
+              <h1 class="mt-2 mb-2">{{filmArray.original_title}}</h1>
+              <p class="mt-3 mb-3">{{filmArray.overview}}</p>
+              <div class="d-inline-flex mx-3" *ngFor="let m of filmGenreArray">
+                <p class="border border-danger p-3 rounded-pill" >{{m.name}}</p>
+
+              </div>
+
+              <div class="mt-4 p-4" >
+                  <h2 class="text-white">Top Cast</h2>
+                  <div class="row">
+                  <div class="col-lg-4" *ngFor="let c of filmTopCast">
+                      <div class="row mt-2 mb-2">
+                          <div class="col-lg-2" *ngIf="c.profile_path">
+                              <img
+                              src="https://image.tmdb.org/t/p/original/{{ c.profile_path}}"
+                              >
+                          </div>
+                          <div class="col-lg-10">
+                              <h3 class="text-white">{{c.original_name}}</h3>
+                              <p class="text-white">{{c.character}}</p>
+                          </div>
+                      </div>
+
+                      </div>
+
+                  </div>
+              </div>
+      </div>
   </div>
 </div>
