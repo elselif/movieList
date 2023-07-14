@@ -9,44 +9,44 @@ import { MovieApiServiceService } from '../service/movie-api-service.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-
   currentPage = 1;
-  filmArray : Movie[] = [];
+  filmArray: Movie[] = [];
   showSpinner: boolean = false;
-  constructor(private http:HttpClient, private apiService : MovieApiServiceService) { }
-
+  constructor(
+    private http: HttpClient,
+    private apiService: MovieApiServiceService
+  ) {}
 
   options: MovieModel = {
     page: 1,
     total_pages: 20,
     results: [],
-    total_results: 0
-  }
+    total_results: 0,
+  };
+
+  genreId: number = 0;
 
   ngOnInit(): void {
-this.getPopularMovie(this.currentPage);
+    this.getPopularMovie(this.currentPage);
+    this.apiService.genreId.subscribe((res) => {
+      this.genreId = res;
+      console.log(this.genreId);
+      this.getPopularMovie(this.currentPage, this.genreId);
+    });
   }
 
-  getPopularMovie(pageNumber:number)
-  {
+  getPopularMovie(pageNumber: number, genreId?: number) {
     this.showSpinner = true;
-    this.apiService.getPopularMovies(pageNumber).subscribe(
-      (response) => {
+    this.apiService
+      .getPopularMovies(pageNumber, genreId)
+      .subscribe((response) => {
         this.filmArray = response.results;
         this.currentPage = pageNumber;
         this.showSpinner = false;
-        console.log(this.filmArray)
-      }
-   )
+        console.log(this.filmArray);
+      });
   }
-
-
-
-
-
-
-
 }

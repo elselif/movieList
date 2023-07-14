@@ -1,9 +1,17 @@
 <!-- navbar start -->
 
-<nav class="navbar navbar-expand-lg fixed-top ">
+<nav class="navbar navbar-expand-lg fixed-top">
   <div class="container-fluid">
     <a class="navbar-brand" routerLink="">SHOWTIME</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
@@ -12,14 +20,42 @@
           <a class="nav-link active" aria-current="page" routerLink="">Home</a>
         </li>
         <li class="nav-item">
-    <a class="nav-link active" aria-current="page" routerLink="genre/movie/list">Categories</a>
+          <a
+            class="nav-link active"
+            aria-current="page"
+            routerLink="genre/movie/list"
+            >Categories</a
+          >
         </li>
+        <li>
+          <div class="dropdown">
+            <a
+              class="btn btn-secondary dropdown-toggle"
+              href="#"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Dropdown link
+            </a>
 
+            <ul class="dropdown-menu">
+              <li>
+                <a
+                  (click)="transferData(item.id)"
+                  class="dropdown-item"
+                  href="#"
+                  *ngFor="let item of categories"
+                  >{{ item.name }}</a
+                >
+              </li>
+            </ul>
+          </div>
+        </li>
       </ul>
     </div>
   </div>
 </nav>
-
 
 <!--  navbar end -->
 
