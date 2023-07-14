@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MovieApiServiceService } from '../service/movie-api-service.service';
-import { Genre } from '../Model/Genre';
+import { GenreResponse } from '../Model/Genre';
 
 @Component({
   selector: 'app-categories',
@@ -9,7 +9,7 @@ import { Genre } from '../Model/Genre';
 })
 export class CategoriesComponent implements OnInit {
 
-  filmListArray : Genre[] = [];
+  filmListArray : GenreResponse = {genres : []};
 
   constructor(private apiService : MovieApiServiceService) { }
 

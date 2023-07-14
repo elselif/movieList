@@ -1,6 +1,8 @@
+export interface GenreResponse {
+  genres: Genre[]
+}
+
 export interface Genre {
-  genres: {
   id: number
   name: string
-}[]
 }

@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit {
   currentPage = 1;
   filmArray : Movie[] = [];
   showSpinner: boolean = false;
+  genreId: number = 0 ;
   constructor(private http:HttpClient, private apiService : MovieApiServiceService) { }
 
 
@@ -28,12 +29,16 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
 this.getPopularMovie(this.currentPage);
+this.apiService.genreId.subscribe((res) => {
+  this.genreId = res;
+  this.getPopularMovie(this.currentPage,this.genreId);
+})
   }
 
-  getPopularMovie(pageNumber:number)
+  getPopularMovie(pageNumber:number ,genreId? : number)
   {
     this.showSpinner = true;
-    this.apiService.getPopularMovies(pageNumber).subscribe(
+    this.apiService.getPopularMovies(pageNumber,genreId).subscribe(
       (response) => {
         this.filmArray = response.results;
         this.currentPage = pageNumber;

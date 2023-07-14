@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http' ;
-import {Observable} from 'rxjs';
+import {Observable,BehaviorSubject} from 'rxjs';
 import { MovieModel } from '../Model/movie';
 
 @Injectable({
@@ -9,6 +9,7 @@ import { MovieModel } from '../Model/movie';
 export class MovieApiServiceService {
 
   baseurl = "https://api.themoviedb.org/3";
+  genreId : BehaviorSubject<number> = new BehaviorSubject(0);
 
   constructor(
     private http:HttpClient,
@@ -18,11 +19,12 @@ export class MovieApiServiceService {
 
   //bannerapidata
 
-  getPopularMovies(pageNumber : number) : Observable<any>
+  getPopularMovies(pageNumber : number , genreId? : number) : Observable<any>
   {
     return this.http.get<any>(`${this.baseurl}/movie/popular`, {
       params : {
         page : pageNumber,
+        with_genres: genreId ?? '',
       },
     })
   }
