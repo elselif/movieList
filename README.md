@@ -1,5 +1,5 @@
 
-# NETFLIX
+# Movie List
 
 
 - TMDB API was used
