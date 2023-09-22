@@ -6,6 +6,11 @@
 - To my list by categories
 - Pagination Structure
 
+## Used technologies
+The following technologies were used in this project:
+
+- Angular: A JavaScript framework used for web application development.
+- TMDb API: API used to retrieve movie information.
 
 ## Run on Your Computer
 
